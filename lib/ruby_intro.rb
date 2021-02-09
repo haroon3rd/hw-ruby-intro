@@ -38,14 +38,18 @@ end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
-  "/^[^aeiou\W]/i".each_char{ |letter|
-  if == nil then true
- 	else false 
- 	end
+  consonant = "bcdfghjklmnpqrstvxz"
+  consonant.each_char{ |letter| return true if s[0] == letter or s[0] == letter.upcase}
+  return false
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  return false if s.empty?
+    s.each_char{ |char|
+        return false if char != "1" and char != "0"}
+    return true if s.to_i(2) % 4 == 0
+    false
 end
 
 # Part 3
