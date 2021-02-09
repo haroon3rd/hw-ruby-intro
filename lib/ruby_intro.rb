@@ -19,6 +19,14 @@ end
 
 def sum_to_n? arr, n
   # YOUR CODE HERE
+  (0..arr.length-1).each do |i|
+    (i+1..arr.length-1).each do |j|
+      if arr[i] + arr[j] == n
+        return true
+      end
+    end
+  end
+  return false
 end
 
 # Part 2
