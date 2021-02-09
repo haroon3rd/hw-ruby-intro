@@ -4,10 +4,17 @@
 
 def sum arr
   # YOUR CODE HERE
+  if arr.length !=0 then arr.inject {|sum, number| sum + number}
+  else 0
+  end    
 end
 
 def max_2_sum arr
   # YOUR CODE HERE
+  if arr.length == 0 then 0
+  elsif arr.length == 1 then arr[0]
+  else arr.sort[-1]+arr.sort[-2]
+  end
 end
 
 def sum_to_n? arr, n
