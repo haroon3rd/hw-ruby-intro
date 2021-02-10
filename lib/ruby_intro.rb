@@ -4,15 +4,15 @@
 
 def sum arr
   # YOUR CODE HERE
-  if arr.length !=0 then arr.inject {|sum, number| sum + number}
-  else 0
+  if arr.length == 0 then return 0
+  else  arr.inject {|sum, number| sum + number}
   end    
 end
 
 def max_2_sum arr
   # YOUR CODE HERE
-  if arr.length == 0 then 0
-  elsif arr.length == 1 then arr[0]
+  if arr.length == 0 then return 0
+  elsif arr.length == 1 then return arr[0]
   else arr.sort[-1]+arr.sort[-2]
   end
 end
@@ -39,21 +39,38 @@ end
 def starts_with_consonant? s
   # YOUR CODE HERE
   consonant = "bcdfghjklmnpqrstvxz"
-  consonant.each_char{ |letter| return true if s[0] == letter or s[0] == letter.upcase}
+  consonant.each_char{ |letter| 
+    if s[0] == letter or s[0] == letter.upcase then return true 
+    end}
   return false
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
-  return false if s.empty?
-    s.each_char{ |char|
-        return false if char != "1" and char != "0"}
-    return true if s.to_i(2) % 4 == 0
-    false
+  if s.empty? then return false
+  end
+    s.each_char{ |char| return false if char != "0" and char != "1"}
+    if s.to_i(2) % 4 == 0 then return true
+    end
+    return false
 end
 
 # Part 3
 
 class BookInStock
 # YOUR CODE HERE
+attr_accessor :isbn
+attr_accessor :price
+
+def initialize(isbn,price)
+  @isbn=isbn
+  @price=price
+  
+  if @isbn.empty? || @price <=0 then raise ArgumentError
+  end
+end
+  
+def price_as_string
+  return "$#{'%.2f' % @price}"
+end
 end
